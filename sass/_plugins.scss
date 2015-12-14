@@ -1,0 +1,44 @@
+.nt-dd-cont {
+  position: relative;
+
+  .nt-dd { overflow: hidden; }
+  }
+
+.nt-dd-opts {
+  display: none;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+
+  ul {
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      }
+    }
+  }
+
+.nt-checkbox, .nt-radio {
+  display: inline-block;
+
+  &:not(.nt-disabled) {
+    cursor: pointer;
+    }
+
+  &.nt-checked .nt-checkmark i { display: block; }
+
+  .nt-checkmark, span {
+    display: inline-block;
+    vertical-align: middle;
+    }
+
+  .nt-checkmark {
+    margin-right: 4px;
+
+    i { display: none; }
+    }
+  }

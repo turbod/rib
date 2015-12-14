@@ -1,0 +1,109 @@
+/* flexbox mixin supporting the new (Sep 2012) syntax + IE10 (Mar 2012) */
+/* requires compass 1.x */
+
+@mixin nt-display-flex {
+  @include display-flex;
+  display: -ms-flexbox;
+  }
+
+@mixin nt-display-inline-flex {
+  @include display-flex(inline-flex);
+  display: -ms-inline-flexbox;
+  }
+
+@mixin nt-flex-direction($value: row)  {
+  @include flex-direction($value);
+  -ms-flex-direction: $value;
+  }
+
+@mixin nt-flex-wrap($value: nowrap) {
+  @include flex-wrap($value);
+
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else { 
+    -ms-flex-wrap: $value; 
+  }
+  }
+
+@mixin nt-flex-flow($values: (row nowrap)) {
+  @include flex-flow($values);
+  -ms-flex-flow: $values;
+  }
+
+@mixin nt-order($value: 0) {
+  @include order($value); 
+  -ms-flex-order: $value;
+  }
+
+@mixin nt-flex($values: (1 1 0)) {
+  @include flex($values);
+  -ms-flex: $values;
+  }
+
+@mixin nt-flex-grow($value: 1) {
+  @include flex-grow($value);
+  -ms-flex-positive: $value;
+  }
+
+@mixin nt-flex-shrink($value: 1) {
+  @include flex-shrink($value);
+  -ms-flex-negative: $value;
+  }
+
+@mixin nt-flex-basis($value: auto) {
+  @include flex-basis($value);
+  -ms-flex-preferred-size: $value;
+  }
+
+@mixin nt-justify-content($value: flex-start) {
+  @include justify-content($value);
+
+  @if $value == flex-start {
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;    
+  } @else {
+    -ms-flex-pack: $value;
+  }  
+  }
+
+@mixin nt-align-items($value: flex-start) {
+  @include align-items($value);
+
+  @if $value == flex-start {
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -ms-flex-align: end;
+  } @else {
+    -ms-flex-align: $value;
+  }
+  }
+
+@mixin nt-align-self($value: auto) {
+  @include align-self($value);
+
+  @if $value == flex-start {
+    -ms-flex-item-align: start;
+  } @else if $value == flex-end {
+    -ms-flex-item-align: end;
+  } @else {
+    -ms-flex-item-align: $value;
+  }
+  }
+
+@mixin nt-align-content($value: flex-start) {
+  @include align-content($value);
+
+  @if $value == flex-start {
+    -ms-flex-line-pack: start;
+  } @else if $value == flex-end {
+    -ms-flex-line-pack: end;
+  } @else {
+    -ms-flex-line-pack: $value;
+  }  
+  }

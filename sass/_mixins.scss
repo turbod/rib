@@ -1,0 +1,71 @@
+@import "vars";
+
+@mixin respond-to($media) {
+  @if $media == smaller-than-min-width {
+    @media only screen and (max-width: $nt_min_width_screen - 1) { @content; }
+    }
+  @else if $media == smaller-than-normal-width {
+    @media only screen and (max-width: $nt_normal_width_screen - 1) { @content; }
+    }
+  }
+
+@mixin nt-placeholder {
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+  }
+
+@mixin nt-text-size-adjust($value) {
+  -moz-text-size-adjust: $value;
+  -webkit-text-size-adjust: $value;
+  -ms-text-size-adjust: $value;
+  }
+
+@mixin nt-arrow-horizontal($h) {
+  width: 0;
+  height: 0;
+  border-top: $h / 2 solid transparent;
+  border-bottom: $h / 2 solid transparent;
+  }
+
+@mixin nt-arrow-left($w: 7px, $h: 10px, $clr: $nt_clr_txt) {
+  @include nt-arrow-horizontal($h);
+  border-right: $w solid $clr;
+  }
+
+@mixin nt-arrow-right($w: 7px, $h: 10px, $clr: $nt_clr_txt) {
+  @include nt-arrow-horizontal($h);
+  border-left: $w solid $clr;
+  }
+
+@mixin nt-gradient($values...) {
+  $experimental-support-for-svg: true;
+  @include background-image(linear-gradient(left, $values));
+  }
+
+@mixin nt-gradient-vert($values...) {
+  $experimental-support-for-svg: true;
+  @include background-image(linear-gradient(top, $values));
+  }
+
+@mixin nt-gradient-alpha($alpha1: 0, $alpha2: 0.3, $val: 100) {
+  $experimental-support-for-svg: true;
+  @include background-image(
+    linear-gradient(left, rgba($val, $val, $val, $alpha1),
+      rgba($val, $val, $val, $alpha2) 50%));
+  }
+
+@mixin nt-gradient-vert-alpha($alpha1: 0, $alpha2: 0.3, $val: 100) {
+  $experimental-support-for-svg: true;
+  @include background-image(
+    linear-gradient(rgba($val, $val, $val, $alpha1),
+      rgba($val, $val, $val, $alpha2)));
+  }
+
+@mixin nt-wh-bg-size($w, $h) {
+  width: $w;
+  height: $h;
+  background-size: $w $h;
+  }
+
