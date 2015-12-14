@@ -1,4 +1,4 @@
-scapula
+rib
 =======
 
 Front-end utility library built on top of Backbone & Require
